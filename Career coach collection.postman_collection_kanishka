@@ -1,0 +1,574 @@
+{
+	"info": {
+		"_postman_id": "12a71c6d-e7eb-4347-a58f-33cd89fb9dd6",
+		"name": "Career coach collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3250421",
+		"_collection_link": "https://www.postman.com/dark-crater-152279/workspace/careercoach4-0/collection/3250421-12a71c6d-e7eb-4347-a58f-33cd89fb9dd6?action=share&source=collection_link&creator=3250421"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('Response Content-Type is text/html', function () {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html');\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "csrf_token",
+							"value": "{{csrf_token}}",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						},
+						{
+							"key": "submit",
+							"value": "Login",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get dashboard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response Content-Type is text/html\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response body is not empty\", function () {",
+							"    pm.expect(pm.response.text()).not.to.not.be.empty;",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response body contains expected HTML elements\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"<html>\");",
+							"    pm.expect(pm.response.text()).to.include(\"<head>\");",
+							"    pm.expect(pm.response.text()).to.include(\"<body>\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "csrf_token",
+							"value": "IjVmMDdlNjZiODg3YjY4N2RjZmU3NGYxY2E3YmZkNWJlMTAxNDcxODAi.Z7LPcQ.8iFTyjzKdchhyVsCV8k84I1yPok",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						},
+						{
+							"key": "submit",
+							"value": "Login",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/dashboard",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"dashboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create case",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Content-Type header is 'text/html'\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response body is not empty\", function () {",
+							"    pm.expect(pm.response.text()).not.to.be.empty;",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response is in HTML format\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "csrf_token",
+							"value": "{{csrf_token}}",
+							"type": "text"
+						},
+						{
+							"key": "nric",
+							"value": "S1234167F",
+							"type": "text"
+						},
+						{
+							"key": "client_name",
+							"value": "Freddy Mercury",
+							"type": "text"
+						},
+						{
+							"key": "case_type",
+							"value": "medical",
+							"type": "text"
+						},
+						{
+							"key": "priority",
+							"value": "high",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Test",
+							"type": "text"
+						},
+						{
+							"key": "submit",
+							"value": "Submit",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cases/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cases",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit case",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Content type is text/html\", function () {",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response body is not empty\", function () {",
+							"    pm.expect(pm.response.text()).not.to.be.empty;",
+							"});",
+							"",
+							"",
+							"pm.test(\"Request URL includes the correct parameters\", function () {",
+							"    const requestUrl = pm.request.url;",
+							"    ",
+							"    pm.expect(requestUrl).to.include(\"nric=T7654621B\");",
+							"    pm.expect(requestUrl).to.include(\"client_name=Jane Smith\");",
+							"    pm.expect(requestUrl).to.include(\"case_type=medical\");",
+							"    pm.expect(requestUrl).to.include(\"priority=medium\");",
+							"    pm.expect(requestUrl).to.include(\"description=Medical support is needed for chronic condition.\");",
+							"    pm.expect(requestUrl).to.include(\"submit=Submit\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response content is in the expected format\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "csrf_token",
+							"value": "{{csrf_token}}",
+							"type": "text"
+						},
+						{
+							"key": "nric",
+							"value": "S1234367F",
+							"type": "text"
+						},
+						{
+							"key": "client_name",
+							"value": "Fig Jhons",
+							"type": "text"
+						},
+						{
+							"key": "case_type",
+							"value": "financial",
+							"type": "text"
+						},
+						{
+							"key": "priority",
+							"value": "high",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "test description auto",
+							"type": "text"
+						},
+						{
+							"key": "submit",
+							"value": "Submit",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cases/9/edit?nric=T7654621B&client_name=Jane Smith\n&case_type=medical&priority=medium&description=Medical support is needed for chronic condition.&submit=Submit",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cases",
+						"9",
+						"edit"
+					],
+					"query": [
+						{
+							"key": "nric",
+							"value": "T7654621B"
+						},
+						{
+							"key": "client_name",
+							"value": "Jane Smith\n"
+						},
+						{
+							"key": "case_type",
+							"value": "medical"
+						},
+						{
+							"key": "priority",
+							"value": "medium"
+						},
+						{
+							"key": "description",
+							"value": "Medical support is needed for chronic condition."
+						},
+						{
+							"key": "submit",
+							"value": "Submit"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add notes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Content type is text/html\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response body is not empty\", function () {",
+							"    pm.expect(pm.response.text()).not.to.be.empty;",
+							"});",
+							"",
+							"",
+							"pm.test(\"Validate the structure of the response body\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('object');",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response does not contain sensitive information\", function () {",
+							"    const responseData = pm.response.text();",
+							"    ",
+							"    pm.expect(responseData).to.not.include(\"password\");",
+							"    pm.expect(responseData).to.not.include(\"ssn\");",
+							"    pm.expect(responseData).to.not.include(\"credit_card_number\");",
+							"    pm.expect(responseData).to.not.include(\"security_code\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "notes",
+							"value": "test note",
+							"type": "text"
+						},
+						{
+							"key": "csrf_token",
+							"value": "{{csrf_token}}",
+							"type": "text"
+						},
+						{
+							"key": "submit",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cases/9/notes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cases",
+						"9",
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Response status code is 200', function () {",
+							"    pm.expect(pm.response.code).to.equal(200);",
+							"})",
+							"",
+							"pm.test('Response has the expected content type of \\'text/html\\'', function () {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html');",
+							"})",
+							"",
+							"pm.test('Response body is not empty', function () {",
+							"    pm.expect(pm.response.text()).not.to.be.empty;",
+							"})",
+							"",
+							"pm.test('Verify that csrf_token is not present in the response', function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData.csrf_token).not.to.exist;",
+							"})",
+							"",
+							"pm.test('Search term and search type parameters are present in the request URL', function () {",
+							"    const requestUrl = pm.request.url.toString();",
+							"    pm.expect(requestUrl).to.include('search_term');",
+							"    pm.expect(requestUrl).to.include('search_type');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cc4govtechqeassessment.pythonanywhere.com/cases/search?csrf_token={{csrf_token}}&search_term=CASE20240001&search_type=case_number&submit=Search",
+					"protocol": "https",
+					"host": [
+						"cc4govtechqeassessment",
+						"pythonanywhere",
+						"com"
+					],
+					"path": [
+						"cases",
+						"search"
+					],
+					"query": [
+						{
+							"key": "csrf_token",
+							"value": "{{csrf_token}}"
+						},
+						{
+							"key": "search_term",
+							"value": "CASE20240001"
+						},
+						{
+							"key": "search_type",
+							"value": "case_number"
+						},
+						{
+							"key": "submit",
+							"value": "Search"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "csrf_token",
+			"value": "IjVmMDdlNjZiODg3YjY4N2RjZmU3NGYxY2E3YmZkNWJlMTAxNDcxODAi.Z7LLjQ.gskrvMxym1tc4l7HHaxPFXiEpu4",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "submit",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
